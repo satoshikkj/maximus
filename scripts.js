@@ -1,12 +1,7 @@
 function toggleDetalhes(button) {
-  const plano = button.closest(".plano");
+  const plano = button.parentElement;
   const detalhes = plano.querySelector(".detalhes");
 
-  if (detalhes.style.display === "block") {
-    detalhes.style.display = "none";
-    button.textContent = "Ver Detalhes";
-  } else {
-    detalhes.style.display = "block";
-    button.textContent = "Ocultar Detalhes";
-  }
+  detalhes.style.display =
+    detalhes.style.display === "block" ? "none" : "block";
 }
