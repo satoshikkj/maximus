@@ -1,7 +1,15 @@
-function toggleDetalhes(button) {
-  const plano = button.parentElement;
-  const detalhes = plano.querySelector(".detalhes");
+const botoes = document.querySelectorAll(".btn-info");
 
-  detalhes.style.display =
-    detalhes.style.display === "block" ? "none" : "block";
-}
+botoes.forEach(botao => {
+  botao.addEventListener("click", () => {
+    const info = botao.nextElementSibling;
+
+    if (info.style.display === "block") {
+      info.style.display = "none";
+      botao.textContent = "Ver Informações";
+    } else {
+      info.style.display = "block";
+      botao.textContent = "Ocultar Informações";
+    }
+  });
+});
