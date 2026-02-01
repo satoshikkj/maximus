@@ -5,36 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maximus Fit Center</title>
 
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-  <h1>MaximusFitCenter</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#planos">Planos</a>
-    <a href="#modalidades">Modalidades</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="logo">Maximus Fit Center</h1>
+    <nav class="menu">
+      <a href="#home">Home</a>
+      <a href="#planos">Planos</a>
+      <a href="#modalidades">Modalidades</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
 
-<section class="banner" id="home">
-  <div class="banner-text">
-    <h2>O nível <span>MAXIMUS</span> de treinamento</h2>
-    <p>Força, disciplina e resultados reais</p>
-    <a href="https://wa.me/559186182429" target="_blank" class="btn-principal">
-      <i class="fab fa-whatsapp"></i> Fale Conosco
-    </a>
-  </div>
-</section>
+  <!-- HOME -->
+  <section id="home" class="home">
+    <h2>Maximus Fit Center</h2>
+  </section>
 
-<section class="container" id="planos">
-  <h2 class="section-title">Planos Especiais</h2>
+  <!-- PLANOS -->
+  <section id="planos" class="section">
+    <h2 class="section-title">Planos</h2>
 
+    <div class="cards">
+
+      <!-- Plano Família -->
+      <div class="card">
+        <h3>Plano Família</h3>
+        <p class="preco">R$ 99,90 por pessoa</p>
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
+
+        <div class="info">
+          <p>Grupos de 3 ou mais pessoas pagam apenas R$ 99,90 por pessoa.</p>
+        </div>
+      </div>
+
+      <!-- Plano Casal -->
+      <div class="card">
+        <h3>Plano Casal</h3>
+        <p class="preco">R$ 99,90 por pessoa</p>
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
+
+        <div class="info">
+          <p>Apresentando certidão de casamento ou união estável.</p>
+        </div>
+      </div>
+
+      <!-- Plano Empresarial -->
+      <div class="card">
+        <h3>Plano Empresarial</h3>
+        <p class="preco">R$ 99,90 por colaborador</p>
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
+
+        <div class="info">
+          <ul>
+            <li>Grupos de 10 pessoas</li>
+            <li>Musculação liberada em todos os horários</li>
+            <li>Orientação com professores</li>
+            <li>Sem taxas escondidas</li>
+            <li>Foco total no resultado</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODALIDADES -->
+  <section id="modalidades" class="section">
+    <h2 class="section-title">Modalidades</h2>
+
+    <div class="modalidades">
+
+      <div class="modalidade">
+        <h3>Muay Thai</h3>
+        <p>Terça, Quarta e Quinta</p>
+        <p>17h • 20h • 21h</p>
+      </div>
+
+      <div class="modalidade">
+        <h3>Jiu-Jitsu</h3>
+        <p>Segunda e Sexta</p>
+        <p>20h às 21h</p>
+      </div>
+
+      <div class="modalidade">
+        <h3>Karatê</h3>
+        <p>Segunda e Quarta</p>
+        <p>16h às 17h</p>
+      </div>
+
+      <div class="modalidade">
+        <h3>FitDance</h3>
+        <p>Terça e Quinta</p>
+        <p>20h</p>
+        <p><strong>Instrutora:</strong> Gaby Gomes</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section">
+    <h2 class="section-title">Contato</h2>
+
+    <div class="contato-botoes">
+      <a href="https://wa.me/559186182429" target="_blank" class="btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+
+      <a href="https://instagram.com/MaximusFitCenter" target="_blank" class="btn-instagram">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 Maximus Fit Center</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
   <div class="cards">
 
     <div class="card">
