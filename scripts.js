@@ -1,89 +1,54 @@
-/* =========================
-   ANIMAÇÃO DE ENTRADA (CARDS)
-========================= */
-const cards = document.querySelectorAll('.card');
+/* ================================
+   TOGGLE DE INFORMAÇÕES DOS PLANOS
+================================ */
 
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
-
-cards.forEach(card => observer.observe(card));
-
-
-/* =========================
-   BOTÃO "INFORMAÇÕES" (PLANOS)
-========================= */
 function toggleInfo(button) {
-  const info = button.nextElementSibling;
+  const card = button.closest('.card');
+  const info = card.querySelector('.info');
 
-  // Fecha todas as outras infos abertas
+  // Fecha todos os outros
   document.querySelectorAll('.info').forEach(item => {
     if (item !== info) {
-      item.style.display = 'none';
-      const btn = item.previousElementSibling;
-      if (btn && btn.tagName === 'BUTTON') {
-        btn.textContent = 'Informações';
-      }
+      item.classList.remove('show');
     }
   });
 
-  // Alterna a info clicada
-  if (info.style.display === 'block') {
-    info.style.display = 'none';
-    button.textContent = 'Informações';
-  } else {
-    info.style.display = 'block';
-    button.textContent = 'Ocultar';
-  }
+  // Abre / fecha o selecionado
+  info.classList.toggle('show');
 }
 
+/* ================================
+   ANIMAÇÃO DE SCROLL SUAVE
+================================ */
 
-/* =========================
-   MODAL (caso esteja usando)
-========================= */
-const modal = document.getElementById('modal');
-const btnInfo = document.getElementById('btnInfo');
-const closeModal = document.getElementById('closeModal');
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
 
-if (btnInfo && modal && closeModal) {
-  btnInfo.addEventListener('click', () => {
-    modal.style.display = 'flex';
-  });
-
-  closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', e => {
-    if (e.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-}
-
-
-/* =========================
-   SMOOTH SCROLL (MENU)
-========================= */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
+    const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   });
 });
 
+/* ================================
+   ANIMAÇÃO DE ENTRADA DOS CARDS
+================================ */
 
-/* =========================
-   SEGURANÇA MOBILE (NADA QUEBRA)
-========================= */
-document.addEventListener('touchstart', () => {}, { passive: true });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+document.querySelectorAll('.card').forEach(card => {
+  observer.observe(card);
+});
