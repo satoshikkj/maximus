@@ -78,7 +78,7 @@ if ("IntersectionObserver" in window) {
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("show");
+          entry.target.classList.add("visible");
           observer.unobserve(entry.target);
         }
       });
@@ -87,7 +87,7 @@ if ("IntersectionObserver" in window) {
   );
 
   document.querySelectorAll(".card").forEach(card => {
-    card.classList.remove("show");
+    card.classList.remove("visible");
     observer.observe(card);
   });
 }
