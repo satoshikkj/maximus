@@ -1,5 +1,5 @@
 /* =========================================
-   LOADING (se existir)
+   LOADING
 ========================================= */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
 });
 
 /* =========================================
-   MENU MOBILE (se existir)
+   MENU MOBILE
 ========================================= */
 const menuBtn = document.querySelector(".menu-btn");
 const mobileMenu = document.querySelector(".mobile-menu");
@@ -20,8 +20,16 @@ if (menuBtn && mobileMenu) {
 }
 
 /* =========================================
-   TOGGLE DE INFORMAÇÕES DOS PLANOS
-   (serve pros dois layouts)
+   FECHAR MENU MOBILE AO CLICAR
+========================================= */
+document.querySelectorAll(".mobile-menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    if (mobileMenu) mobileMenu.style.display = "none";
+  });
+});
+
+/* =========================================
+   TOGGLE DE INFORMAÇÕES (PLANOS)
 ========================================= */
 function fecharOutrasInfos(infoAtual) {
   document.querySelectorAll(".info").forEach(info => {
@@ -31,8 +39,6 @@ function fecharOutrasInfos(infoAtual) {
   });
 }
 
-/* Botão modelo novo (.btn-info) */
-/* Botão modelo novo (.btn-info) */
 document.querySelectorAll(".btn-info").forEach(btn => {
   btn.addEventListener("click", () => {
     const card = btn.closest(".card");
@@ -64,9 +70,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       behavior: "smooth",
       block: "start"
     });
-
-    // Fecha menu mobile após clique
-    if (mobileMenu) mobileMenu.style.display = "none";
   });
 });
 
@@ -78,7 +81,7 @@ if ("IntersectionObserver" in window) {
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.classList.add("show");
           observer.unobserve(entry.target);
         }
       });
@@ -87,7 +90,6 @@ if ("IntersectionObserver" in window) {
   );
 
   document.querySelectorAll(".card").forEach(card => {
-    card.classList.remove("visible");
     observer.observe(card);
   });
 }
