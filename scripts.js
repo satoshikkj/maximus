@@ -42,7 +42,9 @@ document.querySelectorAll(".btn-info").forEach(btn => {
     if (!info) return;
 
     fecharOutrasInfos(info);
-    info.classList.toggle("show");
+const aberto = info.classList.contains("show");
+fecharOutrasInfos(info);
+info.classList.toggle("show", !aberto);
   });
 });
 
