@@ -336,3 +336,15 @@ ul {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* ================= ANIMAÇÃO DE ENTRADA DOS CARDS ================= */
+.card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.5s ease;
+}
