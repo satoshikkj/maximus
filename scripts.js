@@ -41,10 +41,13 @@ document.querySelectorAll(".btn-info").forEach(btn => {
     const info = card.querySelector(".info");
     if (!info) return;
 
+    const aberto = info.classList.contains("show");
+
     fecharOutrasInfos(info);
-const aberto = info.classList.contains("show");
-fecharOutrasInfos(info);
-info.classList.toggle("show", !aberto);
+
+    if (!aberto) {
+      info.classList.add("show");
+    }
   });
 });
 
