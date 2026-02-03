@@ -27,7 +27,7 @@ function fecharOutrasInfos(infoAtual) {
   document.querySelectorAll(".info").forEach(info => {
     if (info !== infoAtual) {
       info.classList.remove("show");
-      info.style.display = "none";
+      info.style.removeProperty("display");
     }
   });
 }
