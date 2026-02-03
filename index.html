@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- TITLE -->
-  <title>Maximus Fit Center</title>
+  <!-- SEO -->
+  <title>Maximus Fit Center | Academia em Barcarena - PA</title>
+  <meta name="description" content="A Maximus Fit Center é uma academia moderna em Barcarena - PA, focada em qualidade, estrutura e experiência para todos os níveis.">
 
   <!-- FONTE -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -16,6 +17,19 @@
 </head>
 <body>
 
+<!-- ================= LOADING ================= -->
+<div id="loader">
+  <div class="spinner"></div>
+</div>
+
+<!-- ================= WHATSAPP FIXO ================= -->
+<a href="https://wa.me/5591985075536" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32">
+    <path d="M19.11 17.39c-.28-.14-1.64-.81-1.9-.9-.26-.09-.45-.14-.64.14-.19.28-.73.9-.9 1.09-.16.19-.33.21-.61.07-.28-.14-1.2-.44-2.29-1.41-.85-.76-1.42-1.7-1.59-1.98-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.64-1.54-.88-2.11-.23-.56-.47-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.44 0 1.44 1.03 2.83 1.18 3.02.14.19 2.03 3.1 4.92 4.35.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.26-.19-.54-.33z"/>
+    <path d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.65.87 5.1 2.34 7.07L4 29l7.11-2.3a11.96 11.96 0 004.93 1.07c6.63 0 12.04-5.4 12.04-12.04C28.08 8.4 22.68 3 16.04 3z"/>
+  </svg>
+</a>
+
 <!-- ================= HEADER ================= -->
 <header class="header">
   <div class="container">
@@ -23,19 +37,51 @@
 
     <nav class="nav">
       <a href="#home">Home</a>
+      <a href="#sobre">Sobre</a>
       <a href="#modalidades">Modalidades</a>
+      <a href="#estrutura">Estrutura</a>
       <a href="#planos">Planos</a>
       <a href="#horarios">Horários</a>
       <a href="#contato">Contato</a>
     </nav>
+
+    <button class="menu-btn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- ================= MENU MOBILE ================= -->
+<nav class="mobile-menu">
+  <a href="#home">Home</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#modalidades">Modalidades</a>
+  <a href="#estrutura">Estrutura</a>
+  <a href="#planos">Planos</a>
+  <a href="#horarios">Horários</a>
+  <a href="#contato">Contato</a>
+</nav>
 
 <!-- ================= HERO ================= -->
 <section id="home" class="hero">
   <div class="container">
     <h2>Maximus Fit Center</h2>
-    <p>Força, disciplina e qualidade de vida.</p>
+    <p>Estrutura, qualidade e experiência para você treinar com excelência.</p>
+    <a href="https://wa.me/5591985075536" target="_blank" class="btn-primary">
+      Fale Conosco no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ================= SOBRE ================= -->
+<section id="sobre" class="section">
+  <div class="container">
+    <h2 class="section-title">Sobre a Maximus</h2>
+    <p>
+      A Maximus Fit Center é uma academia moderna localizada em Barcarena – PA,
+      focada em oferecer estrutura completa, ambiente organizado e uma experiência
+      de treino eficiente para todos os níveis.
+    </p>
   </div>
 </section>
 
@@ -54,6 +100,30 @@
   </div>
 </section>
 
+<!-- ================= ESTRUTURA ================= -->
+<section id="estrutura" class="section dark">
+  <div class="container">
+    <h2 class="section-title">O que você encontra aqui</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Musculação</h3>
+        <p>Equipamentos modernos, ambiente organizado e suporte adequado.</p>
+      </div>
+
+      <div class="card">
+        <h3>Lutas</h3>
+        <p>Modalidades voltadas para condicionamento físico e disciplina.</p>
+      </div>
+
+      <div class="card">
+        <h3>Dança</h3>
+        <p>Aulas dinâmicas que unem movimento, ritmo e bem-estar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PLANOS ================= -->
 <section id="planos" class="section dark">
   <div class="container">
@@ -61,48 +131,37 @@
 
     <div class="grid">
 
-      <!-- PLANO FAMÍLIA -->
+      <div class="card plano">
+        <h3>Plano Comum</h3>
+        <p class="preco">Consulte valores</p>
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
+        <div class="info">
+          <p>Acesso completo à estrutura da academia.</p>
+        </div>
+      </div>
+
       <div class="card plano">
         <h3>Plano Família</h3>
         <p class="preco">R$ 99,90 <span>/ pessoa</span></p>
-
-        <button class="btn-info" onclick="toggleInfo(this)">
-          Informações
-        </button>
-
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
         <div class="info">
-          <p>
-            Grupo de <strong>3 ou mais pessoas</strong> pagam apenas
-            <strong>R$ 99,90 por pessoa</strong>.
-          </p>
+          <p>Grupo de <strong>3 ou mais pessoas</strong> pagam <strong>R$ 99,90</strong>.</p>
         </div>
       </div>
 
-      <!-- PLANO CASAL -->
       <div class="card plano">
         <h3>Plano Casal</h3>
         <p class="preco">R$ 99,90 <span>/ pessoa</span></p>
-
-        <button class="btn-info" onclick="toggleInfo(this)">
-          Informações
-        </button>
-
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
         <div class="info">
-          <p>
-            Válido mediante comprovação de casamento ou união estável.
-          </p>
+          <p>Válido mediante comprovação de união estável ou casamento.</p>
         </div>
       </div>
 
-      <!-- PLANO EMPRESARIAL -->
       <div class="card plano destaque">
         <h3>Plano Empresarial</h3>
         <p class="preco">R$ 99,90 <span>/ colaborador</span></p>
-
-        <button class="btn-info" onclick="toggleInfo(this)">
-          Informações
-        </button>
-
+        <button class="btn-info" onclick="toggleInfo(this)">Informações</button>
         <div class="info">
           <ul>
             <li>Grupos a partir de 10 pessoas</li>
@@ -122,7 +181,6 @@
 <section id="horarios" class="section">
   <div class="container">
     <h2 class="section-title">Horários</h2>
-
     <ul class="lista">
       <li>Segunda a Sexta — 05:30 às 22:00</li>
       <li>Sábado — 08:00 às 16:00</li>
@@ -138,31 +196,20 @@
 
     <div class="contato">
       <a href="https://wa.me/559186182429" target="_blank" class="btn">
-        <svg viewBox="0 0 24 24">
-          <path d="M20.52 3.48A11.91 11.91 0 0012.01 0C5.38 0 .01 5.37.01 12a11.9 11.9 0 001.67 6.07L0 24l6.13-1.61A11.94 11.94 0 0012.01 24C18.63 24 24 18.63 24 12a11.91 11.91 0 00-3.48-8.52z"/>
-        </svg>
         WhatsApp
       </a>
 
       <a href="https://instagram.com/MaximusFitCenter" target="_blank" class="btn outline">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="2" width="20" height="20" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="18" cy="6" r="1"/>
-        </svg>
         Instagram
       </a>
     </div>
   </div>
 </section>
 
-<!-- ================= WHATSAPP FIXO ================= -->
-<a href="https://wa.me/559186182429" target="_blank" class="whatsapp-float">
-  WhatsApp
-</a>
-
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
+  <p>Maximus Fit Center</p>
+  <p>Barcarena – PA | Vila dos Cabanos</p>
   <p>© 2026 Maximus Fit Center</p>
 </footer>
 
