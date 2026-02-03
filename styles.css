@@ -1,6 +1,4 @@
-/* ================================
-   RESET GLOBAL
-================================ */
+/* ================= RESET GLOBAL ================= */
 * {
   margin: 0;
   padding: 0;
@@ -27,9 +25,7 @@ ul {
   list-style: none;
 }
 
-/* ================================
-   VARIÁVEIS
-================================ */
+/* ================= VARIÁVEIS ================= */
 :root {
   --azul: #0a84ff;
   --azul-escuro: #005fd1;
@@ -41,24 +37,10 @@ ul {
   --branco: #ffffff;
   --muted: #9ca3af;
 
-  --sombra: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-/* ================================
-   LOADING
-================================ */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+  --sombra: 0 10px 25px rgba(0, 0, 0, 0.45);
 }
 
-/* ================================
-   CONTAINER
-================================ */
+/* ================= CONTAINER ================= */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -66,12 +48,10 @@ ul {
   padding: 20px;
 }
 
-/* ================================
-   SECTIONS
-================================ */
+/* ================= SECTIONS ================= */
 section,
 .section {
-  padding: 64px 20px;
+  padding: 80px 20px;
 }
 
 .section.dark {
@@ -81,34 +61,30 @@ section,
 .section-title,
 .section h2 {
   text-align: center;
-  margin-bottom: 32px;
-  font-size: 1.8rem;
+  margin-bottom: 40px;
+  font-size: 2rem;
   color: var(--azul);
 }
-/* ================================
-   HEADER
-================================ */
+
+/* ================= HEADER ================= */
 header,
 .header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(11, 15, 20, 0.95);
+  background: rgba(11, 15, 20, 0.96);
   box-shadow: var(--sombra);
 }
 
-.header-container,
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* ================================
-   LOGO
-================================ */
+/* ================= LOGO ================= */
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 
@@ -116,38 +92,37 @@ header,
   color: var(--azul);
 }
 
-/* ================================
-   NAV DESKTOP
-================================ */
-nav ul,
+/* ================= NAV DESKTOP ================= */
 .nav {
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
 
-nav a,
 .nav a {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   opacity: 0.85;
   transition: 0.3s;
 }
 
-nav a:hover,
 .nav a:hover {
   color: var(--azul);
   opacity: 1;
 }
 
-/* ================================
-   MENU MOBILE
-================================ */
+/* ================= MENU MOBILE ================= */
 .menu-btn {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 26px;
-  color: #fff;
+}
+
+.menu-btn span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  margin: 6px 0;
 }
 
 .mobile-menu {
@@ -155,42 +130,39 @@ nav a:hover,
   flex-direction: column;
   background: var(--bg-light);
   position: fixed;
-  top: 64px;
+  top: 70px;
   inset-inline: 0;
   z-index: 999;
 }
 
 .mobile-menu a {
-  padding: 16px;
+  padding: 18px;
   border-bottom: 1px solid #1f2937;
 }
-/* ================================
-   HERO
-================================ */
+
+/* ================= HERO ================= */
 .hero {
   min-height: 100vh;
-  padding: 120px 20px 40px;
+  padding: 140px 20px 60px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 16px;
-  background: radial-gradient(circle at top, #0a84ff20, transparent);
+  gap: 18px;
+  background: radial-gradient(circle at top, #0a84ff25, transparent);
 }
 
-.hero h1,
 .hero h2 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 700;
 }
 
 .hero p {
-  opacity: 0.8;
+  font-size: 1.05rem;
+  opacity: 0.85;
 }
 
-/* ================================
-   BOTÕES
-================================ */
+/* ================= BOTÕES ================= */
 .btn,
 .btn-primary,
 .btn-info {
@@ -198,8 +170,8 @@ nav a:hover,
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 12px 22px;
-  border-radius: 30px;
+  padding: 14px 26px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
   font-weight: 600;
@@ -212,15 +184,14 @@ nav a:hover,
 .btn:hover,
 .btn-primary:hover,
 .btn-info:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
-/* ================================
-   GRID / CARDS
-================================ */
+
+/* ================= GRID / CARDS ================= */
 .cards,
 .grid {
   display: grid;
-  gap: 25px;
+  gap: 28px;
 }
 
 @media (min-width: 768px) {
@@ -232,12 +203,12 @@ nav a:hover,
 
 .card {
   background: var(--cinza);
-  border-radius: 16px;
-  padding: 25px;
+  border-radius: 18px;
+  padding: 30px;
   box-shadow: var(--sombra);
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.5s ease;
+  transform: translateY(35px);
+  transition: all 0.6s ease;
 }
 
 .card.show {
@@ -246,38 +217,39 @@ nav a:hover,
 }
 
 .card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
 }
 
-/* ================================
-   PREÇO
-================================ */
+/* ================= PREÇO ================= */
 .preco {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--azul);
 }
 
-/* ================================
-   INFO TOGGLE
-================================ */
+.preco span {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* ================= INFO TOGGLE ================= */
 .info {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
   margin-top: 15px;
-  padding: 15px;
-  background: #10151d;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--muted);
 }
 
 .info.show {
-  display: block;
+  max-height: 500px;
+  opacity: 1;
 }
-/* ================================
-   WHATSAPP FIXO
-================================ */
+
+/* ================= WHATSAPP FIXO ================= */
 .whatsapp-fixo,
 .whatsapp-float {
   position: fixed;
@@ -285,33 +257,27 @@ nav a:hover,
   right: 20px;
   background: #25d366;
   color: #fff;
-  width: 55px;
-  height: 55px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
   z-index: 999;
 }
 
-/* ================================
-   FOOTER
-================================ */
+/* ================= FOOTER ================= */
 footer,
 .footer {
   background: #020617;
-  padding: 30px 20px;
+  padding: 32px 20px;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--muted);
 }
 
-/* ================================
-   RESPONSIVO
-================================ */
+/* ================= RESPONSIVO ================= */
 @media (max-width: 768px) {
-  nav,
   .nav {
     display: none;
   }
@@ -320,7 +286,7 @@ footer,
     display: block;
   }
 
-  .section-title {
-    font-size: 1.6rem;
+  .hero h2 {
+    font-size: 2rem;
   }
 }
