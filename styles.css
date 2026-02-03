@@ -1,24 +1,33 @@
-/* RESET */
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* VARIÁVEIS */
+/* ================= VARIÁVEIS ================= */
 :root {
+  /* Paleta principal */
   --azul: #0a84ff;
+  --blue: #0a3cff;
+
   --preto: #0b0b0b;
+  --bg-dark: #0b0f14;
+  --bg-light: #121826;
+
   --cinza: #1a1a1a;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
   --branco: #ffffff;
+
   --sombra: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* BASE */
+/* ================= BASE ================= */
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--preto);
-  color: var(--branco);
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -31,7 +40,7 @@ ul {
   list-style: none;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 .container {
   width: 100%;
   max-width: 1100px;
@@ -39,13 +48,43 @@ ul {
   padding: 20px;
 }
 
-/* HEADER */
+/* ================= LOADER ================= */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--muted);
+  border-top-color: var(--azul);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= HEADER ================= */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: linear-gradient(90deg, #000, #0a0a0a);
+  background: rgba(11, 15, 20, 0.95);
   box-shadow: var(--sombra);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -57,71 +96,143 @@ ul {
   color: var(--azul);
 }
 
+/* ================= NAV ================= */
 .nav {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
-  flex-wrap: wrap;
+  display: none;
+  gap: 16px;
 }
 
 .nav a {
   font-size: 0.9rem;
-  opacity: 0.8;
+  opacity: 0.85;
   transition: 0.3s;
 }
 
 .nav a:hover {
-  opacity: 1;
   color: var(--azul);
+  opacity: 1;
 }
 
-/* HERO */
+/* ================= MENU MOBILE ================= */
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--branco);
+  margin: 5px 0;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 64px;
+  inset-inline: 0;
+  background: var(--bg-light);
+  display: none;
+  flex-direction: column;
+  z-index: 90;
+}
+
+.mobile-menu a {
+  padding: 16px;
+  color: var(--branco);
+  border-bottom: 1px solid #1f2937;
+}
+
+/* ================= HERO ================= */
 .hero {
+  min-height: 100vh;
+  padding: 120px 20px 40px;
   text-align: center;
-  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
   background: radial-gradient(circle at top, #0a84ff20, transparent);
 }
 
-.hero h2 {
-  font-size: 2rem;
+.hero h2,
+.hero h1 {
+  font-size: 2.2rem;
   font-weight: 700;
 }
 
 .hero p {
-  margin-top: 10px;
   opacity: 0.8;
 }
 
-/* SECTIONS */
+/* ================= BOTÕES ================= */
+.btn,
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--azul), #005fd1);
+  color: var(--branco);
+  font-weight: 600;
+  box-shadow: var(--sombra);
+  transition: 0.3s;
+}
+
+.btn:hover,
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid var(--azul);
+  color: var(--azul);
+}
+
+/* ================= SECTIONS ================= */
 .section {
-  padding: 60px 0;
+  padding: 64px 20px;
 }
 
 .section.dark {
-  background-color: var(--cinza);
+  background: var(--bg-light);
 }
 
-.section-title {
+.section-title,
+.section h2 {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   font-size: 1.8rem;
 }
 
-/* GRID */
-.grid {
+/* ================= GRID / CARDS ================= */
+.grid,
+.cards {
   display: grid;
   gap: 20px;
 }
 
 @media (min-width: 768px) {
-  .grid {
+  .grid,
+  .cards {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: none;
   }
 }
 
-/* CARDS */
 .card {
-  background-color: #111;
+  background: #0f172a;
   border-radius: 16px;
   padding: 25px;
   box-shadow: var(--sombra);
@@ -142,8 +253,9 @@ ul {
   border: 2px solid var(--azul);
 }
 
-/* PREÇO */
-.preco {
+/* ================= PREÇOS ================= */
+.preco,
+.price {
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--azul);
@@ -154,25 +266,19 @@ ul {
   color: #ccc;
 }
 
-/* BOTÃO INFORMAÇÕES */
-.btn-info {
+/* ================= INFO TOGGLE ================= */
+.btn-info,
+.info-btn {
   width: 100%;
   margin-top: 15px;
   padding: 12px;
-  background: linear-gradient(135deg, var(--azul), #005fd1);
+  background: none;
   border: none;
-  border-radius: 12px;
-  color: var(--branco);
+  color: var(--azul);
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.btn-info:hover {
-  filter: brightness(1.1);
-}
-
-/* INFO (TOGGLE) */
 .info {
   max-height: 0;
   overflow: hidden;
@@ -180,7 +286,12 @@ ul {
   transition: all 0.4s ease;
   margin-top: 15px;
   font-size: 0.9rem;
-  color: #ddd;
+  color: var(--muted);
+}
+
+.info.show {
+  max-height: 500px;
+  opacity: 1;
 }
 
 .info ul {
@@ -191,12 +302,7 @@ ul {
   margin-bottom: 6px;
 }
 
-.info.show {
-  max-height: 500px;
-  opacity: 1;
-}
-
-/* LISTA */
+/* ================= LISTA ================= */
 .lista {
   max-width: 400px;
   margin: auto;
@@ -208,63 +314,38 @@ ul {
   border-bottom: 1px solid #222;
 }
 
-/* CONTATO */
-.contato {
+/* ================= CONTATO ================= */
+.contato,
+.contact-links {
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: center;
 }
 
-/* BOTÕES */
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
-  border-radius: 30px;
-  background-color: var(--azul);
-  color: var(--branco);
-  font-weight: 600;
-  box-shadow: var(--sombra);
-  transition: 0.3s;
-}
-
-.btn svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-
-.btn:hover {
-  transform: scale(1.05);
-}
-
-.btn.outline {
-  background: transparent;
-  border: 2px solid var(--azul);
-  color: var(--azul);
-}
-
-/* WHATSAPP FIXO */
+/* ================= WHATSAPP FLOAT ================= */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #25d366;
+  background: #25d366;
   color: #fff;
-  padding: 14px 20px;
-  border-radius: 30px;
-  font-weight: 600;
+  padding: 14px 18px;
+  border-radius: 50px;
   box-shadow: var(--sombra);
   z-index: 200;
 }
 
-/* FOOTER */
+.whatsapp-float svg {
+  width: 24px;
+  fill: #fff;
+}
+
+/* ================= FOOTER ================= */
 .footer {
   text-align: center;
-  padding: 20px;
-  background-color: #000;
+  padding: 24px;
+  background: #020617;
   font-size: 0.85rem;
-  opacity: 0.7;
+  color: var(--muted);
 }
