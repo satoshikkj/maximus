@@ -1,5 +1,5 @@
 /* =========================================
-   LOADING
+   LOADING (se existir)
 ========================================= */
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
@@ -14,17 +14,19 @@ const mobileMenu = document.querySelector(".mobile-menu");
 
 if (menuBtn && mobileMenu) {
   menuBtn.addEventListener("click", () => {
-    mobileMenu.style.display =
-      mobileMenu.style.display === "flex" ? "none" : "flex";
+    const aberto = mobileMenu.style.display === "flex";
+    mobileMenu.style.display = aberto ? "none" : "flex";
   });
 }
 
 /* =========================================
-   FECHAR MENU MOBILE AO CLICAR
+   FECHAR MENU MOBILE AO CLICAR EM LINK
 ========================================= */
 document.querySelectorAll(".mobile-menu a").forEach(link => {
   link.addEventListener("click", () => {
-    if (mobileMenu) mobileMenu.style.display = "none";
+    if (mobileMenu) {
+      mobileMenu.style.display = "none";
+    }
   });
 });
 
@@ -32,7 +34,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link => {
    TOGGLE DE INFORMAÇÕES (PLANOS)
 ========================================= */
 function fecharOutrasInfos(infoAtual) {
-  document.querySelectorAll(".info").forEach(info => {
+  document.querySelectorAll(".info.show").forEach(info => {
     if (info !== infoAtual) {
       info.classList.remove("show");
     }
@@ -58,7 +60,7 @@ document.querySelectorAll(".btn-info").forEach(btn => {
 });
 
 /* =========================================
-   SCROLL SUAVE PARA ÂNCORAS
+   SCROLL SUAVE + FECHA MENU MOBILE
 ========================================= */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", e => {
@@ -66,10 +68,15 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (!target) return;
 
     e.preventDefault();
+
     target.scrollIntoView({
       behavior: "smooth",
       block: "start"
     });
+
+    if (mobileMenu) {
+      mobileMenu.style.display = "none";
+    }
   });
 });
 
