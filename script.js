@@ -1,161 +1,108 @@
-// =============================
-// HEADER DINÂMICO AO SCROLL
-// =============================
+// ===============================
+// HEADER DINÂMICO NO SCROLL
+// ===============================
 
 const header = document.querySelector(".header");
 
 window.addEventListener("scroll", () => {
-if (window.scrollY > 50) {
-header.style.background = "rgba(0,0,0,0.98)";
-header.style.boxShadow = "0 0 20px rgba(30,144,255,0.4)";
-} else {
-header.style.background = "rgba(13,13,13,0.95)";
-header.style.boxShadow = "none";
-}
+    if (window.scrollY > 60) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
 });
 
-// =============================
-// ANIMAÇÃO AO SCROLL (REVEAL)
-// =============================
 
-const revealElements = document.querySelectorAll("section, .card, .plano, .member");
+// ===============================
+// REVEAL ANIMATION (INTERSECTION OBSERVER)
+// ===============================
 
-const revealOnScroll = () => {
-const windowHeight = window.innerHeight;
+const revealElements = document.querySelectorAll("section, .card");
 
-revealElements.forEach(element => {  
-    const elementTop = element.getBoundingClientRect().top;  
-
-    if (elementTop < windowHeight - 100) {  
-        element.style.opacity = "1";  
-        element.style.transform = "translateY(0)";  
-        element.style.transition = "all 0.8s ease";  
-    }  
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15
 });
 
-};
-
-window.addEventListener("scroll", revealOnScroll);
-
-// Estado inicial oculto
-revealElements.forEach(element => {
-element.style.opacity = "0";
-element.style.transform = "translateY(40px)";
+revealElements.forEach(el => {
+    el.classList.add("reveal-hidden");
+    observer.observe(el);
 });
 
-// =============================
-// MENU MOBILE SIMPLES
-// =============================
 
-const nav = document.querySelector(".nav ul");
+// ===============================
+// MENU MOBILE MODERNO
+// ===============================
 
-// Criar botão hamburguer dinamicamente
-const menuBtn = document.createElement("div");
-menuBtn.innerHTML = "☰";
-menuBtn.style.fontSize = "28px";
-menuBtn.style.cursor = "pointer";
-menuBtn.style.display = "none";
-menuBtn.style.color = "#1E90FF";
+const menuMobile = document.querySelector(".menu-mobile");
+const nav = document.querySelector(".nav");
 
-document.querySelector(".header-container").appendChild(menuBtn);
-
-// Mostrar botão apenas no mobile
-const checkScreen = () => {
-if (window.innerWidth <= 768) {
-menuBtn.style.display = "block";
-nav.style.display = "none";
-nav.style.flexDirection = "column";
-nav.style.background = "#111";
-nav.style.position = "absolute";
-nav.style.top = "70px";
-nav.style.right = "20px";
-nav.style.padding = "20px";
-nav.style.borderRadius = "10px";
-} else {
-menuBtn.style.display = "none";
-nav.style.display = "flex";
-}
-};
-
-window.addEventListener("resize", checkScreen);
-checkScreen();
-
-// Toggle menu
-menuBtn.addEventListener("click", () => {
-if (nav.style.display === "none") {
-nav.style.display = "flex";
-} else {
-nav.style.display = "none";
-}
+menuMobile.addEventListener("click", () => {
+    nav.classList.toggle("active");
+    menuMobile.classList.toggle("open");
 });
 
-// =============================
+// Fechar menu ao clicar em link
+document.querySelectorAll(".nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        menuMobile.classList.remove("open");
+    });
+});
+
+
+// ===============================
 // BOTÃO FLUTUANTE WHATSAPP
-// =============================
+// ===============================
 
 const whatsappBtn = document.createElement("a");
 whatsappBtn.href = "https://wa.me/559186182429";
 whatsappBtn.target = "_blank";
+whatsappBtn.classList.add("floating-whatsapp");
 whatsappBtn.innerHTML = "💬";
-whatsappBtn.style.position = "fixed";
-whatsappBtn.style.bottom = "25px";
-whatsappBtn.style.right = "25px";
-whatsappBtn.style.background = "#1E90FF";
-whatsappBtn.style.color = "#fff";
-whatsappBtn.style.fontSize = "24px";
-whatsappBtn.style.width = "55px";
-whatsappBtn.style.height = "55px";
-whatsappBtn.style.display = "flex";
-whatsappBtn.style.alignItems = "center";
-whatsappBtn.style.justifyContent = "center";
-whatsappBtn.style.borderRadius = "50%";
-whatsappBtn.style.boxShadow = "0 0 20px #1E90FF";
-whatsappBtn.style.zIndex = "999";
-whatsappBtn.style.transition = "0.3s";
-
-whatsappBtn.addEventListener("mouseenter", () => {
-whatsappBtn.style.transform = "scale(1.1)";
-});
-
-whatsappBtn.addEventListener("mouseleave", () => {
-whatsappBtn.style.transform = "scale(1)";
-});
 
 document.body.appendChild(whatsappBtn);
 
-// =============================
-// SCROLL SUAVE PARA LINKS INTERNOS
-// =============================
+
+// ===============================
+// SCROLL SUAVE MELHORADO
+// ===============================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener("click", function (e) {
-e.preventDefault();
-document.querySelector(this.getAttribute("href"))
-.scrollIntoView({
-behavior: "smooth"
-});
-});
+    anchor.addEventListener("click", function (e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    });
 });
 
-// =============================
-// CARDS EXPANSÍVEIS (ACCORDION)
-// =============================
+
+// ===============================
+// ACCORDION CARDS MELHORADO
+// ===============================
 
 const cards = document.querySelectorAll(".card");
 
 cards.forEach(card => {
-card.addEventListener("click", () => {
+    card.addEventListener("click", () => {
 
-const isActive = card.classList.contains("active");  
+        const isActive = card.classList.contains("active");
 
-    // Fecha todos  
-    cards.forEach(c => c.classList.remove("active"));  
+        cards.forEach(c => c.classList.remove("active"));
 
-    // Abre somente o clicado  
-    if (!isActive) {  
-        card.classList.add("active");  
-    }  
-
-});
-
+        if (!isActive) {
+            card.classList.add("active");
+        }
+    });
 });
