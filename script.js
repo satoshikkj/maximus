@@ -136,3 +136,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
     });
 });
+
+// =============================
+// CARDS EXPANSÍVEIS (ACCORDION)
+// =============================
+
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+
+        const isActive = card.classList.contains("active");
+
+        // Fecha todos
+        cards.forEach(c => c.classList.remove("active"));
+
+        // Abre somente o clicado
+        if (!isActive) {
+            card.classList.add("active");
+        }
+
+    });
+});
