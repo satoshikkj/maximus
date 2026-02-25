@@ -1,3 +1,5 @@
+alert("JS funcionando");
+
 // =============================
 // HEADER DINÂMICO AO SCROLL
 // =============================
