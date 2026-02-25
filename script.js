@@ -49,44 +49,11 @@ revealElements.forEach(element => {
 
 const nav = document.querySelector(".nav ul");
 
-// Criar botão hamburguer dinamicamente
-const menuBtn = document.createElement("div");
-menuBtn.innerHTML = "☰";
-menuBtn.style.fontSize = "28px";
-menuBtn.style.cursor = "pointer";
-menuBtn.style.display = "none";
-menuBtn.style.color = "#1E90FF";
+const menuMobile = document.querySelector(".menu-mobile");
+const nav = document.querySelector(".nav");
 
-document.querySelector(".header-container").appendChild(menuBtn);
-
-// Mostrar botão apenas no mobile
-const checkScreen = () => {
-    if (window.innerWidth <= 768) {
-        menuBtn.style.display = "block";
-        nav.style.display = "none";
-        nav.style.flexDirection = "column";
-        nav.style.background = "#111";
-        nav.style.position = "absolute";
-        nav.style.top = "70px";
-        nav.style.right = "20px";
-        nav.style.padding = "20px";
-        nav.style.borderRadius = "10px";
-    } else {
-        menuBtn.style.display = "none";
-        nav.style.display = "flex";
-    }
-};
-
-window.addEventListener("resize", checkScreen);
-checkScreen();
-
-// Toggle menu
-menuBtn.addEventListener("click", () => {
-    if (nav.style.display === "none") {
-        nav.style.display = "flex";
-    } else {
-        nav.style.display = "none";
-    }
+menuMobile.addEventListener("click", () => {
+    nav.classList.toggle("active");
 });
 
 // =============================
